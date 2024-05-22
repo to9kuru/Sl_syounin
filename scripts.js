@@ -1,3 +1,4 @@
+// scripts.js
 const customEmojis = [
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2588%25E3%2581%25A3%25E3%2581%2599%25E3%2581%2594_%25E3%2581%2599%25E3%2581%2594%25E3%2581%2584/e251e156f3d393e0.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2588%25E3%2582%2589%25E3%2581%2584%25EF%25BC%25BF/2b5de0d8a96487a2.png',
@@ -41,6 +42,7 @@ const customEmojis = [
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2582%25E3%2581%2596%25E3%2581%25A8%25E3%2581%2584_01/0b5c636af50b6d62.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2588%25E3%2581%2590%25E3%2581%2584/00948d1d38d176fe.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/wwww_%25E8%25B5%25A4/829382ab6e421573.gif'
+
 ];
 
 document.getElementById('postForm').addEventListener('submit', function (e) {
