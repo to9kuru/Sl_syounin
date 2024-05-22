@@ -1,9 +1,8 @@
-// scripts.js
 const customEmojis = [
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2588%25E3%2581%25A3%25E3%2581%2599%25E3%2581%2594_%25E3%2581%2599%25E3%2581%2594%25E3%2581%2584/e251e156f3d393e0.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2588%25E3%2582%2589%25E3%2581%2584%25EF%25BC%25BF/2b5de0d8a96487a2.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%258A%25E3%2582%2582%25E3%2582%258D%25E3%2581%2584_%25E3%2581%258A%25E3%2582%2582%25E3%2581%2597%25E3%2582%258D%25E3%2581%2584/c3c7308aa5e236b1.png',
-    'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%258A%25E3%2581%25AF%25E3%2582%2588%25E3%2581%2586%25E3%2581%2594%25E3%2581%2596%25E3%2581%2584%25E3%2581%25BE%25E3%2581%25992/4f4c9f42eee96651.png',
+    'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%258A%25E3%2581%25AF%25E3%2582%2588%25E3%2581%2586%25E3%2581%2594%25E3%2581%2596%25E3%2581%2584%25E3%2581%25BE%25E3%2581%2592/4f4c9f42eee96651.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%258B%25E3%2581%25A3%25E3%2581%2593%25E8%258D%2589/5e178127cad0c73e.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%258B%25E3%2581%25A3%25E3%2581%2591%25E3%2581%2587%25EF%25BC%25BF/7060ef499baaec48.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%258C%25E3%2582%2593%25E3%2581%25B0%25E3%2581%2587%25E3%2581%258C%25E3%2582%2593%25E3%2581%25B0%25E3%2582%258C/639c195687bce440.gif',
@@ -39,14 +38,9 @@ const customEmojis = [
     'https://emoji.slack-edge.com/TQ0UQJQN5/iq%25E3%2582%25AB%25E3%2583%25B3%25E3%2582%25B9%25E3%2583%2588_%25E3%2581%2597%25E3%2581%25A6%25E3%2581%25A6%25E8%258D%2589/5056535d7ceada87.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/seyana/b730647d325d7de3.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/sorena2/60aa86586c4d77f8.png',
-    'https://emoji.slack-edge.com/TQ0　UQJQN5/%25E3%2581%2582%25E3%2581%2596%25E3%2581%25A8%25E3%2581%2584_01/0b5c636af50b6d62.png',
+    'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2582%25E3%2581%2596%25E3%2581%25A8%25E3%2581%2584_01/0b5c636af50b6d62.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2588%25E3%2581%2590%25E3%2581%2584/00948d1d38d176fe.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/wwww_%25E8%25B5%25A4/829382ab6e421573.gif',
-    
-
-    
-    //'',
-
 ];
 
 document.getElementById('postForm').addEventListener('submit', function (e) {
@@ -75,14 +69,14 @@ document.getElementById('postForm').addEventListener('submit', function (e) {
     reactions.className = 'reactions';
     post.appendChild(reactions);
 
-    const emojiCount = getRandomInt(1900, 1190); 
+    const emojiCount = getRandomInt(1, 10);
 
     for (let i = 0; i < emojiCount; i++) {
         const emoji = customEmojis[Math.floor(Math.random() * customEmojis.length)];
-        const reactionCount = 0; 
+        const reactionCount = 0;
         setTimeout(() => {
             addReaction(reactions, emoji, reactionCount);
-        }, i * 30); 
+        }, i * 30);
     }
 
     postContainer.appendChild(post);
@@ -105,12 +99,11 @@ function addReaction(container, emoji, reactionCount) {
 
     container.appendChild(reaction);
 
-    
-     const increaseReactionInterval = setInterval(() => {
-        const increaseAmount = getRandomInt(1, 7, 2, 3, 4, 6, 9, 70, 20, 50, 1000, 10000, 100000, 100000, 1000000, 100000000, 10000, 100000, 689000);
+    const increaseReactionInterval = setInterval(() => {
+        const increaseAmount = getRandomInt(1, 10);
         reactionCount += increaseAmount;
         countElement.textContent = reactionCount;
-    }, getRandomInt(1, 10, 100, 1000, 5, 50, 500, 5000 ,200 ,300 ,600 , 800 , 3 ,5 , 6 ,60 ,20 ,40 ,80, 2000, 3000, 5000, 500000, 50000, 5000000, 50000000, 500000, 5000000000)); 
+    }, getRandomInt(1000, 5000));
 }
 
 function getRandomInt(min, max) {
