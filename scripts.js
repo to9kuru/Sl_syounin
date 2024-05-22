@@ -1,6 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const customEmojis = [
-           'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2588%25E3%2581%25A3%25E3%2581%2599%25E3%2581%2594_%25E3%2581%2599%25E3%2581%2594%25E3%2581%2584/e251e156f3d393e0.png',
+const customEmojis = [
+    'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2588%25E3%2581%25A3%25E3%2581%2599%25E3%2581%2594_%25E3%2581%2599%25E3%2581%2594%25E3%2581%2584/e251e156f3d393e0.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2588%25E3%2582%2589%25E3%2581%2584%25EF%25BC%25BF/2b5de0d8a96487a2.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%258A%25E3%2582%2582%25E3%2582%258D%25E3%2581%2584_%25E3%2581%258A%25E3%2582%2582%25E3%2581%2597%25E3%2582%258D%25E3%2581%2584/c3c7308aa5e236b1.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%258A%25E3%2581%25AF%25E3%2582%2588%25E3%2581%2586%25E3%2581%2594%25E3%2581%2596%25E3%2581%2584%25E3%2581%25BE%25E3%2581%25992/4f4c9f42eee96651.png',
@@ -42,52 +41,71 @@ document.addEventListener('DOMContentLoaded', () => {
     'https://emoji.slack-edge.com/TQ0　UQJQN5/%25E3%2581%2582%25E3%2581%2596%25E3%2581%25A8%25E3%2581%2584_01/0b5c636af50b6d62.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/%25E3%2581%2588%25E3%2581%2590%25E3%2581%2584/00948d1d38d176fe.png',
     'https://emoji.slack-edge.com/TQ0UQJQN5/wwww_%25E8%25B5%25A4/829382ab6e421573.gif',
-    ];
+];
 
-    document.getElementById('postForm').addEventListener('submit', function (e) {
-        e.preventDefault();
+document.getElementById('postForm').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-        const content = document.getElementById('userContent').value;
+    const content = document.getElementById('userContent').value;
 
-        if (!content) {
-            alert('テキストを入力してないのなんでなん⁉️検証してみよう🔥👊');
-            return;
-        }
-
-        const postContainer = document.getElementById('postContainer');
-        const post = document.createElement('div');
-        post.className = 'post';
-
-        const time = new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
-
-        if (content) {
-            const textElement = document.createElement('p');
-            textElement.textContent = content;
-            post.appendChild(textElement);
-        }
-
-        const reactions = document.createElement('div');
-        reactions.className = 'reactions';
-        post.appendChild(reactions);
-
-        const emojiCount = getRandomInt(1, customEmojis.length);
-
-        for (let i = 0; i < emojiCount; i++) {
-            const emoji = customEmojis[Math.floor(Math.random() * customEmojis.length)];
-            const reaction = document.createElement('div');
-            reaction.className = 'reaction';
-            const img = document.createElement('img');
-            img.src = emoji;
-            reaction.appendChild(img);
-            reactions.appendChild(reaction);
-        }
-
-        postContainer.appendChild(post);
-    });
-
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
+    if (!content) {
+        alert('テキストを入力してないのなんでなん⁉️検証してみよう🔥👊');
+        return;
     }
+
+    const postContainer = document.getElementById('postContainer');
+    const post = document.createElement('div');
+    post.className = 'post';
+
+    const time = new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+
+    if (content) {
+        const textElement = document.createElement('p');
+        textElement.textContent = content;
+        post.appendChild(textElement);
+    }
+
+    const reactions = document.createElement('div');
+    reactions.className = 'reactions';
+    post.appendChild(reactions);
+
+    const emojiCount = getRandomInt(10, 20); // 表示する絵文字の数
+
+    for (let i = 0; i < emojiCount; i++) {
+        const emoji = customEmojis[Math.floor(Math.random() * customEmojis.length)];
+        const reactionCount = 0; 
+        setTimeout(() => {
+            addReaction(reactions, emoji, reactionCount);
+        }, i * 300); // 表示の間隔を長めに設定
+    }
+
+    postContainer.appendChild(post);
+
+    document.getElementById('userContent').value = '';
 });
+
+function addReaction(container, emoji, reactionCount) {
+    const reaction = document.createElement('div');
+    reaction.className = 'reaction';
+
+    const emojiElement = document.createElement('img');
+    emojiElement.src = emoji;
+
+    const countElement = document.createElement('span');
+    countElement.textContent = reactionCount;
+
+    reaction.appendChild(emojiElement);
+    reaction.appendChild(countElement);
+
+    container.appendChild(reaction);
+
+    const increaseReactionInterval = setInterval(() => {
+        const increaseAmount = getRandomInt(1, 10); // 増加量の範囲を小さく設定
+        reactionCount += increaseAmount;
+        countElement.textContent = reactionCount;
+    }, getRandomInt(1000, 5000)); // 更新間隔を設定
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
