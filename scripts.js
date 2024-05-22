@@ -69,14 +69,14 @@ document.getElementById('postForm').addEventListener('submit', function (e) {
     reactions.className = 'reactions';
     post.appendChild(reactions);
 
-    const emojiCount = getRandomInt(1900, 1190);
+    const emojiCount = getRandomInt(1900, 1190); 
 
     for (let i = 0; i < emojiCount; i++) {
         const emoji = customEmojis[Math.floor(Math.random() * customEmojis.length)];
-        const reactionCount = 0;
+        const reactionCount = 0; 
         setTimeout(() => {
             addReaction(reactions, emoji, reactionCount);
-        }, i * 30);
+        }, i * 30); 
     }
 
     postContainer.appendChild(post);
@@ -99,11 +99,12 @@ function addReaction(container, emoji, reactionCount) {
 
     container.appendChild(reaction);
 
-    const increaseReactionInterval = setInterval(() => {
+    
+     const increaseReactionInterval = setInterval(() => {
         const increaseAmount = getRandomInt(1, 7, 2, 3, 4, 6, 9, 70, 20, 50, 1000, 10000, 100000, 100000, 1000000, 100000000, 10000, 100000, 689000);
         reactionCount += increaseAmount;
         countElement.textContent = reactionCount;
-    }, getRandomInt(1, 10, 100, 1000, 5, 50, 500, 5000 ,200 ,300 ,600 , 800 , 3 ,5 , 6 ,60 ,20 ,40 ,80, 2000, 3000, 5000, 500000, 50000, 5000000, 50000000, 500000, 5000000000));
+    }, getRandomInt(1, 10, 100, 1000, 5, 50, 500, 5000 ,200 ,300 ,600 , 800 , 3 ,5 , 6 ,60 ,20 ,40 ,80, 2000, 3000, 5000, 500000, 50000, 5000000, 50000000, 500000, 5000000000)); 
 }
 
 function getRandomInt(min, max) {
