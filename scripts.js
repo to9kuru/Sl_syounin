@@ -101,10 +101,10 @@ function addReaction(container, emoji, reactionCount) {
 
     
      const increaseReactionInterval = setInterval(() => {
-        const increaseAmount = getRandomInt(1, 7, 2, 3, 4, 6, 9, 70, 20, 50, 1000, 10000, 100000, 100000, 1000000, 100000000, 10000, 100000, 689000);
+        const increaseAmount = getRandomInt(17, 772, 27, 34, 417, 696, 91, 780, 290, 950);
         reactionCount += increaseAmount;
         countElement.textContent = reactionCount;
-    }, getRandomInt(1, 10, 100, 1000, 5, 50, 500, 5000 ,200 ,300 ,600 , 800 , 3 ,5 , 6 ,60 ,20 ,40 ,80, 2000, 3000, 5000, 500000, 50000, 5000000, 50000000, 500000, 5000000000)); 
+    }, getRandomInt(100, 10, 100, 1000, 5, 50, 500, 5000 ,200 ,300 ,600 , 800 , 3 ,5 , 6 ,60 ,20 ,40 ,80, 2000, 3000, 5000, 500000, 50000, 5000000, 50000000, 500000, 5000000000)); 
 }
 
 function getRandomInt(min, max) {
